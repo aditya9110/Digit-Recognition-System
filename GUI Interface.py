@@ -66,11 +66,11 @@ def prediction(array):
     predict = model.predict(array)
     return np.argmax(predict[0])
 
-def print_Text(output, font_size=14):
+def print_Text(output, font_size, x, y):
     font = pygame.font.Font('freesansbold.ttf', font_size)
     text = font.render(output, True, black)
     text_rect = text.get_rect()
-    text_rect.center = (280, 600)
+    text_rect.center = (x, y)
     win.blit(text, text_rect)
 
 if __name__ == '__main__':
@@ -88,7 +88,10 @@ if __name__ == '__main__':
     # button
     button_color = (234, 216, 91)
     pygame.draw.rect(win, button_color, (230, 575, 100, 50))
-    print_Text('OUTPUT')
+    print_Text('OUTPUT', 14, 280, 600)
+    
+    print_Text('Backspace: Clear Screen', 14, 450, 590)
+    print_Text('ESC: To Close', 14, 450, 610)
 
     array = create_pixel_array(rows, columns, width, height)
     run = True
@@ -103,7 +106,7 @@ if __name__ == '__main__':
                 if event.key == pygame.K_BACKSPACE:
                     array = create_pixel_array(28, 28, width, height)
                     pygame.draw.rect(win, button_color, (230, 575, 100, 50))
-                    print_Text('OUTPUT')
+                    print_Text('OUTPUT', 14, 280, 600)
 
             if pygame.mouse.get_pressed()[0]:
                 pos = pygame.mouse.get_pos()
@@ -114,7 +117,7 @@ if __name__ == '__main__':
                     np_array_binary = np_array_binary.reshape(-1, 28, 28, 1)
                     output = prediction(np_array_binary)
                     pygame.draw.rect(win, button_color, (230, 575, 100, 50))
-                    print_Text(str(output), 20)
+                    print_Text(str(output), 20, 280, 600)
 
         draw_gui(win, array)
         pygame.display.update()
