@@ -6,4 +6,6 @@ The deep learning model is trained on [MNIST digit dataset](https://www.kaggle.c
 -	**Technologies used:** Python, Tensorflow, Scikit Learn, Pygame (GUI).
 
 ### Check output:
-![Output Video](Digit Recognition Video.gif)
+![Output Video](https://github.com/aditya9110/Digit-Recognition-System/blob/master/Digit%20Recognition%20Video.gif)
+
+In the output the last number is not recognized accurately and that's what I am trying to make it more accurate and perfect.
